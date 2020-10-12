@@ -18,7 +18,7 @@ const database ={
 }
 
 app.get('/',(req,res) =>{
-    res.sendStatus(200)
+    res.json(database.users)
 })
 
 app.post('/signin', (req,res) =>{
@@ -29,6 +29,19 @@ app.post('/signin', (req,res) =>{
         res.status(400).json('User doesn\'t exist or password incorrect')
     }
     
+})
+
+app.post('/register', (req,res) => {
+    const { email, name, password } = req.body
+    database.users.push({
+        id: '126',
+        name: name,
+        email: email,
+        password: password,
+        entries: 0,
+        joined: new Date()
+    })
+    res.status(200).json(`New user ${database.users[(database.users.length-1)].name} succesfully created`)
 })
 
 app.listen(3000, () => {
