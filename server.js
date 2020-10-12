@@ -27,8 +27,7 @@ app.post('/signin', (req,res) =>{
             res.json('success')
     } else {
         res.status(400).json('User doesn\'t exist or password incorrect')
-    }
-    
+    }  
 })
 
 app.post('/register', (req,res) => {
