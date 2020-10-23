@@ -1,9 +1,12 @@
 const { response } = require('express');
 const express = require('express');
 const bcrypt = require('bcrypt-nodejs')
+const fs = require('fs')
+const cors = require('cors')
 
 const app = express()
 app.use(express.json())
+app.use(cors())
 
 const database ={
     users:[
@@ -11,6 +14,7 @@ const database ={
             id: '123',
             name: 'John Doe',
             email: 'johndoe@gmail.com',
+            password: 'cookies',
             entries: 0,
             joined: new Date()
         }
@@ -25,13 +29,21 @@ const database ={
 }
 
 app.get('/',(req,res) =>{
-    res.json(database.users)
+    //res.json(database.users)
+    // fs.readFile('/', 'utf8', function (err,data) {
+    //     if (err) {
+    //       return console.log(err);
+    //     }
+        
+    //   });
+    //send a file through http
+    //   res.status(200).sendFile(__dirname+'/prezenta2020aprilie.xlsx')
 })
 
 app.post('/signin', (req,res) =>{
-    bcrypt.compare("bacon", hash, function(err, res) {
-        // res == true
-    });
+    // bcrypt.compare("bacon", hash, function(err, res) {
+    //     // res == true
+    // });
     if (req.body.email === database.users[0].email && 
         req.body.password === database.users[0].password){
             res.json('success')
@@ -60,7 +72,7 @@ app.post('/register', (req,res) => {
         entries: 0,
         joined: new Date()
     })
-    res.status(200).json(`New user ${database.users[(database.users.length-1)].name} succesfully created`)
+    res.status(200).json(database.users[(database.users.length-1)])
 })
 
 app.get('/profile/:id',(req,res) => {
@@ -103,6 +115,6 @@ bcrypt.hash("bacon", null, null, function(err, hash) {
 //     // res = false
 // });
 
-app.listen(3000, () => {
+app.listen(3003, () => {
     console.log("Server is running!")
 })
