@@ -1,7 +1,41 @@
-GET http://localhost:3000/ HTTP/1.1
+GET http://localhost:3003/ HTTP/1.1
 content-type: application/json
 
 {
+}
+
+###
+POST http://localhost:3003/signin HTTP/1.1
+content-type: application/json
+
+{
+    "email": "johnny1234doe@gmail.com",
+    "password":"cokies"
+}
+
+###
+POST http://localhost:3003/register HTTP/1.1
+content-type: application/json
+
+{
+    "email": "johnny1234doe@gmail.com",
+    "name": "Johnny1234",
+    "password":"cookies"
+}
+
+###
+GET http://localhost:3003/profile/1 HTTP/1.1
+content-type: application/json
+
+{
+}
+
+###
+PUT http://localhost:3003/image HTTP/1.1
+content-type: application/json
+
+{
+    "id": "1"
 }
 
 ###
