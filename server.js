@@ -26,13 +26,7 @@ app.use(cors());
 
 app.get("/", (req, res) => {
   //res.json(database.users)
-  // fs.readFile('/', 'utf8', function (err,data) {
-  //     if (err) {
-  //       return console.log(err);
-  //     }
-  //   });
-  //send a file through http
-  //   res.status(200).sendFile(__dirname+'/prezenta2020aprilie.xlsx')
+  // 
 });
 
 app.post("/signin", (req, res) => {
