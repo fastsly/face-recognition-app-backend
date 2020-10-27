@@ -18,7 +18,7 @@ const db = knex({
     user: "postgres",
     password: "bungeelaci",
     database: "face-recognition",
-  },
+  }
 });
 
 app.use(express.json());
@@ -26,34 +26,15 @@ app.use(cors());
 
 app.get("/", (req, res) => {
   res.json('It is working!!')
-  
 });
 
-app.post("/signin", (req, res) => {
-  // bcrypt.compare("bacon", hash, function(err, res) {
-  //     // res == true
-  // });
-  signin.handleSignIn(req,res, db, bcrypt)
-  
-});
+app.post("/signin", (req, res) => { signin.handleSignIn(req,res, db, bcrypt) });
 
-app.post("/register", (req, res) => {
-  register.handleRegister(req, res, db, bcrypt);
-});
+app.post("/register", (req, res) => { register.handleRegister(req, res, db, bcrypt); });
 
-app.get("/profile/:id", (req, res) => {
-  profile.handleProfile(res, req, db)
-});
+app.get("/profile/:id", (req, res) => { profile.handleProfile(res, req, db) });
 
-app.put("/image", (req, res) => {
-  image.handleImage(req, res, db)
-});
-
-// // Load hash from your password DB.
-
-// bcrypt.compare("veggies", hash, function(err, res) {
-//     // res = false
-// });
+app.put("/image", (req, res) => { image.handleImage(req, res, db) });
 
 app.listen(process.env.PORT || 3000, () => {
   console.log(`Server is running on port ${process.env.PORT || 3000}!`);
