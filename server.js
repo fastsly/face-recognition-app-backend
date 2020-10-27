@@ -55,6 +55,6 @@ app.put("/image", (req, res) => {
 //     // res = false
 // });
 
-app.listen(3003, () => {
-  console.log("Server is running!");
+app.listen(process.env.PORT || 3000, () => {
+  console.log(`Server is running on port ${process.env.PORT || 3000}!`);
 });
