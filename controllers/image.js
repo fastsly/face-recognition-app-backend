@@ -8,7 +8,7 @@ const handleApiCall = (req,res) =>{
     app.models
         .predict(Clarifai.FACE_DETECT_MODEL, req.body.input, { language: "en" })
         .then(data => res.json(data))
-        .catch(err => res.status(400).json('error with api call'))
+        .catch(err => res.status(400).json('error with api call'+err))
 }
 
 const handleImage = (req, res, db) =>{
